@@ -1,0 +1,35 @@
+{
+  "name": "lalal-mcp",
+  "version": "1.0.0",
+  "description": "Connettore MCP (remote MCP server) per LALAL.AI, su Cloudflare Workers con accesso OAuth.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "node test/run.mjs"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.6",
+    "@cloudflare/workers-oauth-provider": "^1.2.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261118.1",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.164.0"
+  },
+  "private": true,
+  "type": "module",
+  "cloudflare": {
+    "label": "LALAL.AI MCP",
+    "products": [
+      "Workers",
+      "KV"
+    ],
+    "bindings": {
+      "OAUTH_KV": {
+        "description": "Archivio dei collegamenti OAuth. Viene creato in automatico: lascia il nome proposto."
+      }
+    }
+  }
+}

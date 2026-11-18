@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Il nome del Worker decide l'indirizzo: https://lalal-mcp.<tuo-sottodominio>.workers.dev
+  "name": "lalal-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  // Richiesto dal provider OAuth per verificare in sicurezza l'identità pubblicata dei client (CIMD).
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  // Nessun id: Cloudflare crea da solo lo spazio KV al primo deploy.
+  // Contiene token e chiave LALAL.AI solo in forma cifrata.
+  "kv_namespaces": [{ "binding": "OAUTH_KV","id": "0c4f15113d5b4c63a7fed6b222c506f6" }],
+  "observability": { "enabled": true }
+}
